@@ -1,11 +1,27 @@
-<ul class="list-group">
-  <li class="list-group-item">An item</li>
-  <li class="list-group-item">A second item</li>
-  <li class="list-group-item">A third item</li>
-  <li class="list-group-item">A fourth item</li>
-  <li class="list-group-item">And a fifth one</li>
-</ul>
+<table *ngIf="dataLoaded == true" class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>TissueId</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let tissueImage of tissueImages">
+    <td>{{ tissueImage.id }}</td>
+    <td>{{ tissueImage.tissueId }}</td>
+    <td>{{ tissueImage.date }}</td>
+  </tr>
+</table>
 
+<br /><br /><br />
+
+<img
+  *ngFor="let tissueImage of tissueImages"
+  align="center"
+  src="{{ 'data:image/jpg;base64,' + tissueImage.image }}"
+  width="200"
+  height="350"
+/>
 
 <!-- <input type="file" (change)="openFile($event)" /> <br /><br /><br />
 
@@ -17,4 +33,4 @@
   height="350"
 /> -->
 
-<!-- <button type="button" (change)="clickButton()">TIKLA BANA AQ</button> -->
+<!-- <button type="button" (change)="">TIKLA BANA AQ</button> -->

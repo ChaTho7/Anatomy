@@ -1,7 +1,6 @@
 export interface Tissue {
+  date: Date;
   id: number;
-  sortId: number;
-  regionId: number;
-  name: string;
-  gender: string;
+  image: string;
+  tissueId: string;
 }
