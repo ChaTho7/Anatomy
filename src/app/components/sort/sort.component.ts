@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TissueService } from 'src/app/services/tissue.service';
 import { TissueImage } from 'src/app/models/tissueImage';
+import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 
 @Component({
   selector: 'app-sort',
@@ -10,6 +11,8 @@ import { TissueImage } from 'src/app/models/tissueImage';
 export class SortComponent implements OnInit {
   tissueImages: TissueImage[] = [];
   dataLoaded = false;
+  data: any;
+  private comService = ComminicateService;
   constructor(private tissueService: TissueService) {}
 
   ngOnInit(): void {
@@ -36,5 +39,9 @@ export class SortComponent implements OnInit {
       };
       reader.readAsText(input.files[index]);
     }
+  }
+
+  getInput() {
+    this.data = this.comService.getterMethod();
   }
 }

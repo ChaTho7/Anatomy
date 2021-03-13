@@ -10,7 +10,7 @@ import { TissueResponseModel } from '../models/tissueResponseModel';
 export class TissueService {
   constructor(private httpClient: HttpClient) {}
 
-  tissueApiURL = 'https://localhost:44344/api/tissues/getall';
+  tissueApiURL = 'https://localhost:44344/api/tissues/getdetail';
   tissueImageApiURL =
     'https://localhost:44344/api/TissueImages/getimage?tissueId=3';
 
