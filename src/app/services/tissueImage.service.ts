@@ -8,14 +8,16 @@ import { TissueImage } from '../models/tissueImage';
   providedIn: 'root',
 })
 export class TissueImageService {
-  tissueImageApiURL =
-    'https://localhost:44344/api/TissueImages/getimage?tissueId=3';
+  apiURL = 'https://localhost:44344/api/TissueImages/getimage?tissueId=';
 
   constructor(private httpClient: HttpClient) {}
 
-  getTissueImages(): Observable<ListResponseModel<TissueImage>> {
+  getTissueImages(
+    tissueId: number
+  ): Observable<ListResponseModel<TissueImage>> {
+    let tissueImageApiURL = this.apiURL + tissueId;
     return this.httpClient.get<ListResponseModel<TissueImage>>(
-      this.tissueImageApiURL
+      tissueImageApiURL
     );
   }
 }

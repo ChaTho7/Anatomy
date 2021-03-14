@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TissueImage } from 'src/app/models/tissueImage';
 import { TissueImageService } from 'src/app/services/tissueImage.service';
 
@@ -10,14 +11,19 @@ import { TissueImageService } from 'src/app/services/tissueImage.service';
 export class TissueImageComponent implements OnInit {
   tissueImages: TissueImage[] = [];
   dataLoaded = false;
-  constructor(private tissueImageService: TissueImageService) {}
+  constructor(
+    private tissueImageService: TissueImageService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getTissueImages();
+    this.activatedRoute.params.subscribe((params) => {
+      this.getTissueImages(params['tissueId']);
+    });
   }
 
-  getTissueImages() {
-    this.tissueImageService.getTissueImages().subscribe((response) => {
+  getTissueImages(tissueId: number) {
+    this.tissueImageService.getTissueImages(tissueId).subscribe((response) => {
       this.tissueImages = response.data;
       this.dataLoaded = true;
     });

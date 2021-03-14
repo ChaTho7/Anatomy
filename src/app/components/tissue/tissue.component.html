@@ -12,7 +12,7 @@
       <th>Origin</th>
     </tr>
   </thead>
-  <tr *ngFor="let tissueDetail of tissuesDetail">
+  <tr *ngFor="let tissueDetail of tissuesDetail" routerLink="/tissues/{{tissueDetail.id}}">
     <td>{{ tissueDetail.id }}</td>
     <td>{{ tissueDetail.name }}</td>
     <td>{{ tissueDetail.sort }}</td>
