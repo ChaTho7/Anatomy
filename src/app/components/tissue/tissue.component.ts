@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tissue } from 'src/app/models/tissue';
+import { TissueDetail } from 'src/app/models/tissueDetail';
 import { TissueService } from 'src/app/services/tissue.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { TissueService } from 'src/app/services/tissue.service';
   styleUrls: ['./tissue.component.css'],
 })
 export class TissueComponent implements OnInit {
-  tissues: Tissue[] = [];
+  tissues: Tissue[];
+  tissuesDetail: TissueDetail[];
   dataLoaded = false;
 
   constructor(
@@ -28,15 +30,15 @@ export class TissueComponent implements OnInit {
   }
 
   getTissues() {
-    this.tissueService.getTissues().subscribe((response) => {
-      this.tissues = response.data;
+    this.tissueService.getTissuesDetail().subscribe((response) => {
+      this.tissuesDetail = response.data;
       this.dataLoaded = true;
     });
   }
 
   getTissuesBySort(sortId: number) {
     this.tissueService.getTissuesBySort(sortId).subscribe((response) => {
-      this.tissues = response.data;
+      this.tissuesDetail = response.data;
       this.dataLoaded = true;
     });
   }

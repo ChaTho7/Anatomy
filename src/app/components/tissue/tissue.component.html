@@ -9,13 +9,15 @@
       <th>Sort</th>
       <th>Region</th>
       <th>Gender</th>
+      <th>Origin</th>
     </tr>
   </thead>
-  <tr *ngFor="let tissue of tissues">
-    <td>{{ tissue.id }}</td>
-    <td>{{ tissue.name }}</td>
-    <td>{{ tissue.sortId }}</td>
-    <td>{{ tissue.regionId }}</td>
-    <td>{{ tissue.gender }}</td>
+  <tr *ngFor="let tissueDetail of tissuesDetail">
+    <td>{{ tissueDetail.id }}</td>
+    <td>{{ tissueDetail.name }}</td>
+    <td>{{ tissueDetail.sort }}</td>
+    <td>{{ tissueDetail.region }}</td>
+    <td>{{ tissueDetail.gender }}</td>
+    <td>{{ tissueDetail.origin }}</td>
   </tr>
 </table>
