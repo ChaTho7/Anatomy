@@ -1,8 +1,7 @@
 export interface Tissue {
   id: number;
-  sort: string;
-  region: string;
+  sortId: number;
+  regionId: number;
   name: string;
   gender: string;
-  origin: string;
 }

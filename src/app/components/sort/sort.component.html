@@ -1,27 +1,22 @@
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>TissueId</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let tissueImage of tissueImages">
-    <td>{{ tissueImage.id }}</td>
-    <td>{{ tissueImage.tissueId }}</td>
-    <td>{{ tissueImage.date }}</td>
-  </tr>
-</table>
+<ul class="list-group">
+  <li
+    (click)="clearCurrentSort()"
+    routerLink="/tissues"
+    [class]="checkCurrentSort()"
+  >
+    All Tissues
+  </li>
+  <li
+    (click)="setCurrentSort(sort)"
+    routerLink="/tissues/sort/{{ sort.id }}"
+    *ngFor="let sort of sorts"
+    [class]="getCurrentSort(sort)"
+  >
+    {{ sort.name }}
+  </li>
+</ul>
 
-<br /><br />
-
-<img
-  *ngFor="let tissueImage of tissueImages"
-  align="center"
-  src="{{ 'data:image/jpg;base64,' + tissueImage.image }}"
-  width="200"
-  height="350"
-/>
+<h3 *ngIf="currentSort">{{ currentSort.name }}</h3>
 
 <!-- <input type="file" (change)="openFile($event)" /> <br /><br /><br />
 

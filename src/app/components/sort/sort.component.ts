@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TissueService } from 'src/app/services/tissue.service';
-import { TissueImage } from 'src/app/models/tissueImage';
+import { Sort } from 'src/app/models/sort';
 import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
+import { SortService } from 'src/app/services/sort.service';
 
 @Component({
   selector: 'app-sort',
@@ -9,22 +9,47 @@ import { ComminicateService } from 'src/app/services/comminicate/comminicate.ser
   styleUrls: ['./sort.component.css'],
 })
 export class SortComponent implements OnInit {
-  tissueImages: TissueImage[] = [];
   dataLoaded = false;
   data: any;
+  sorts: Sort[] = [];
+  currentSort: Sort;
   private comService = ComminicateService;
-  constructor(private tissueService: TissueService) {}
+  constructor(private sortService: SortService) {}
 
   ngOnInit(): void {
-    this.getTissueImages();
+    this.getSorts();
   }
 
-  getTissueImages() {
-    this.tissueService.getTissueImages().subscribe((response) => {
-      console.log(response);
-      this.tissueImages = response.data;
+  getSorts() {
+    this.sortService.getSorts().subscribe((response) => {
+      console.log('123');
+      this.sorts = response.data;
       this.dataLoaded = true;
     });
+  }
+
+  setCurrentSort(sort: Sort) {
+    this.currentSort = sort;
+  }
+
+  getCurrentSort(sort: Sort) {
+    if (sort == this.currentSort) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
+  }
+
+  checkCurrentSort() {
+    if (!this.currentSort || this.currentSort.id == 0) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
+  }
+
+  clearCurrentSort() {
+    this.currentSort = { id: 0, name: '', origin: '' };
   }
 
   fileContent: any = '';

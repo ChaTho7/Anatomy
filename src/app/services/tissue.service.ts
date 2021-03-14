@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TissueImageResponseModel } from '../models/tissueImageResponseModel';
-import { TissueResponseModel } from '../models/tissueResponseModel';
+import { ListResponseModel } from '../models/listResponseModel';
+import { Tissue } from '../models/tissue';
+import { TissueDetail } from '../models/tissueDetail';
 
 @Injectable({
   providedIn: 'root',
@@ -10,15 +11,20 @@ import { TissueResponseModel } from '../models/tissueResponseModel';
 export class TissueService {
   constructor(private httpClient: HttpClient) {}
 
-  tissueApiURL = 'https://localhost:44344/api/tissues/getdetail';
-  tissueImageApiURL =
-    'https://localhost:44344/api/TissueImages/getimage?tissueId=3';
+  apiURL = 'https://localhost:44344/api/';
 
-  getTissues(): Observable<TissueResponseModel> {
-    return this.httpClient.get<TissueResponseModel>(this.tissueApiURL);
+  getTissues(): Observable<ListResponseModel<Tissue>> {
+    let tissueApiURL = this.apiURL + 'tissues/getall';
+    return this.httpClient.get<ListResponseModel<Tissue>>(tissueApiURL);
   }
 
-  getTissueImages(): Observable<TissueImageResponseModel> {
-    return this.httpClient.get<TissueImageResponseModel>(this.tissueImageApiURL);
+  getTissuesDetail(): Observable<ListResponseModel<TissueDetail>> {
+    let tissueDetailApiURL = this.apiURL + 'tissues/getdetail';
+    return this.httpClient.get<ListResponseModel<TissueDetail>>(tissueDetailApiURL);
+  }
+
+  getTissuesBySort(sortId: number): Observable<ListResponseModel<Tissue>> {
+    let tissueBySortApiUrl = this.apiURL + 'tissues/getbysort?sortId=' + sortId;
+    return this.httpClient.get<ListResponseModel<Tissue>>(tissueBySortApiUrl);
   }
 }

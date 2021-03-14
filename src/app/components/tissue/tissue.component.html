@@ -9,15 +9,13 @@
       <th>Sort</th>
       <th>Region</th>
       <th>Gender</th>
-      <th>Origin</th>
     </tr>
   </thead>
   <tr *ngFor="let tissue of tissues">
     <td>{{ tissue.id }}</td>
     <td>{{ tissue.name }}</td>
-    <td>{{ tissue.sort }}</td>
-    <td>{{ tissue.region }}</td>
+    <td>{{ tissue.sortId }}</td>
+    <td>{{ tissue.regionId }}</td>
     <td>{{ tissue.gender }}</td>
-    <td>{{ tissue.origin }}</td>
   </tr>
 </table>
