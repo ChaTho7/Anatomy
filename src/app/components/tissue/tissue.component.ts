@@ -14,7 +14,6 @@ export class TissueComponent implements OnInit {
   tissues: Tissue[];
   tissuesDetail: TissueDetail[];
   dataLoaded = false;
-  private comService = ComminicateService;
 
   constructor(
     private tissueService: TissueService,

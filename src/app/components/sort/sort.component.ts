@@ -11,7 +11,6 @@ import { SortService } from 'src/app/services/sort.service';
 })
 export class SortComponent implements OnInit {
   dataLoaded = false;
-  data: any;
   sorts: Sort[] = [];
   currentSort: Sort;
   private comService = ComminicateService;

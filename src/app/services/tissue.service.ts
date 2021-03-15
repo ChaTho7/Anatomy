@@ -19,7 +19,7 @@ export class TissueService {
   }
 
   getTissuesDetail(): Observable<ListResponseModel<TissueDetail>> {
-    let tissueDetailApiURL = this.apiURL + 'tissues/getdetail';
+    let tissueDetailApiURL = this.apiURL + 'tissues/getbyfilter';
     return this.httpClient.get<ListResponseModel<TissueDetail>>(
       tissueDetailApiURL
     );
@@ -28,7 +28,8 @@ export class TissueService {
   getTissuesBySort(
     sortId: number
   ): Observable<ListResponseModel<TissueDetail>> {
-    let tissueBySortApiUrl = this.apiURL + 'tissues/getbysort?sortId=' + sortId;
+    let tissueBySortApiUrl =
+      this.apiURL + 'tissues/getbyfilter?sortId=' + sortId;
     return this.httpClient.get<ListResponseModel<TissueDetail>>(
       tissueBySortApiUrl
     );
@@ -38,7 +39,7 @@ export class TissueService {
     regionId: number
   ): Observable<ListResponseModel<TissueDetail>> {
     let tissueByRegionApiUrl =
-      this.apiURL + 'tissues/getbyregion?regionId=' + regionId;
+      this.apiURL + 'tissues/getbyfilter?regionId=' + regionId;
     return this.httpClient.get<ListResponseModel<TissueDetail>>(
       tissueByRegionApiUrl
     );
@@ -49,7 +50,7 @@ export class TissueService {
     regionId: number
   ): Observable<ListResponseModel<TissueDetail>> {
     let tissueBySort_RegionApiUrl1 =
-      this.apiURL + 'tissues/getbysort_region?sortId=' + sortId;
+      this.apiURL + 'tissues/getbyfilter?sortId=' + sortId;
     let tissueBySort_RegionApiUrl =
       tissueBySort_RegionApiUrl1 + '&regionId=' + regionId;
     return this.httpClient.get<ListResponseModel<TissueDetail>>(

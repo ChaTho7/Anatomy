@@ -11,6 +11,7 @@ import { TissueImageService } from 'src/app/services/tissueImage.service';
 export class TissueImageComponent implements OnInit {
   tissueImages: TissueImage[] = [];
   dataLoaded = false;
+
   constructor(
     private tissueImageService: TissueImageService,
     private activatedRoute: ActivatedRoute
