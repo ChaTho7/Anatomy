@@ -29,7 +29,7 @@ export class TissueComponent implements OnInit {
         this.getTissues();
       }
     });
-  }
+  } 
 
   getTissues() {
     this.tissueService.getTissuesDetail().subscribe((response) => {
