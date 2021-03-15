@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Region } from 'src/app/models/region';
+import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 import { RegionService } from 'src/app/services/region.service';
 
 @Component({
@@ -11,7 +13,9 @@ export class RegionComponent implements OnInit {
   dataLoaded = false;
   regions: Region[] = [];
   currentRegion: Region;
-  constructor(private regionService: RegionService) {}
+  private comService = ComminicateService;
+
+  constructor(private regionService: RegionService, private router: Router) {}
 
   ngOnInit(): void {
     this.getRegions();
@@ -26,6 +30,8 @@ export class RegionComponent implements OnInit {
 
   setCurrentRegion(region: Region) {
     this.currentRegion = region;
+    this.comService.regionId = region.id;
+    this.comService.filterRouter(this.router);
   }
 
   getCurrentRegion(region: Region) {
@@ -46,5 +52,7 @@ export class RegionComponent implements OnInit {
 
   clearCurrentRegion() {
     this.currentRegion = { id: 0, name: '' };
+    this.comService.regionId = 0;
+    this.comService.filterRouter(this.router);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tissue } from 'src/app/models/tissue';
 import { TissueDetail } from 'src/app/models/tissueDetail';
+import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 import { TissueService } from 'src/app/services/tissue.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class TissueComponent implements OnInit {
   tissues: Tissue[];
   tissuesDetail: TissueDetail[];
   dataLoaded = false;
+  private comService = ComminicateService;
 
   constructor(
     private tissueService: TissueService,
@@ -21,15 +23,22 @@ export class TissueComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params['sortId']) {
+      if (
+        params['sortId'] &&
+        params['regionId'] &&
+        params['sortId'] != 0 &&
+        params['regionId'] != 0
+      ) {
+        this.getTissuesBySort_Region(params['sortId'], params['regionId']);
+      } else if (params['sortId'] && params['sortId'] != 0) {
         this.getTissuesBySort(params['sortId']);
-      } else if (params['regionId']) {
+      } else if (params['regionId'] && params['regionId'] != 0) {
         this.getTissuesByRegion(params['regionId']);
       } else {
         this.getTissues();
       }
     });
-  } 
+  }
 
   getTissues() {
     this.tissueService.getTissuesDetail().subscribe((response) => {
@@ -50,5 +59,14 @@ export class TissueComponent implements OnInit {
       this.tissuesDetail = response.data;
       this.dataLoaded = true;
     });
+  }
+
+  getTissuesBySort_Region(sortId: number, regionId: number) {
+    this.tissueService
+      .getTissuesBySort_Region(sortId, regionId)
+      .subscribe((response) => {
+        this.tissuesDetail = response.data;
+        this.dataLoaded = true;
+      });
   }
 }

@@ -22,6 +22,10 @@ const routes: Routes = [
     component: TissueComponent,
   },
   {
+    path: 'tissues/sort_region/:sortId/:regionId',
+    component: TissueComponent,
+  },
+  {
     path: 'tissues/:tissueId',
     component: TissueImageComponent,
   },

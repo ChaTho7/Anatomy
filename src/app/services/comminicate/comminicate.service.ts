@@ -1,20 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ComminicateService {
-  static onData: any;
+  static sortId: number;
+  static regionId: number;
 
   constructor() {}
 
-  innerMethod(data: any) {
-    // we can do stuff with data if we want
-    ComminicateService.onData = data;
-  }
-
-  static getterMethod() {
-    return this.onData;
+  static filterRouter(router: Router) {
+    let currentSortId: number = ComminicateService.sortId
+      ? ComminicateService.sortId
+      : 0;
+    let currentRegionId: number = ComminicateService.regionId
+      ? ComminicateService.regionId
+      : 0;
+    if (currentRegionId != 0 && currentSortId != 0) {
+      router.navigate(['tissues/sort_region', currentSortId, currentRegionId]);
+    } else if (currentRegionId == 0 && currentSortId != 0) {
+      router.navigate(['tissues/sort', currentSortId]);
+    } else if (currentRegionId != 0 && currentSortId == 0) {
+      router.navigate(['tissues/region', currentRegionId]);
+    } else {
+      router.navigate(['tissues']);
+    }
   }
 }

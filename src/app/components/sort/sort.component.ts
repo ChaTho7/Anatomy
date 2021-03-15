@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Sort } from 'src/app/models/sort';
 import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 import { SortService } from 'src/app/services/sort.service';
@@ -14,7 +15,8 @@ export class SortComponent implements OnInit {
   sorts: Sort[] = [];
   currentSort: Sort;
   private comService = ComminicateService;
-  constructor(private sortService: SortService) {}
+
+  constructor(private sortService: SortService, private router: Router) {}
 
   ngOnInit(): void {
     this.getSorts();
@@ -29,6 +31,8 @@ export class SortComponent implements OnInit {
 
   setCurrentSort(sort: Sort) {
     this.currentSort = sort;
+    this.comService.sortId = sort.id;
+    this.comService.filterRouter(this.router);
   }
 
   getCurrentSort(sort: Sort) {
@@ -49,6 +53,8 @@ export class SortComponent implements OnInit {
 
   clearCurrentSort() {
     this.currentSort = { id: 0, name: '', origin: '' };
+    this.comService.sortId = 0;
+    this.comService.filterRouter(this.router);
   }
 
   fileContent: any = '';
@@ -63,9 +69,5 @@ export class SortComponent implements OnInit {
       };
       reader.readAsText(input.files[index]);
     }
-  }
-
-  getInput() {
-    this.data = this.comService.getterMethod();
   }
 }

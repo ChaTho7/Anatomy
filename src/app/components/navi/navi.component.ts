@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 
 @Component({
   selector: 'app-navi',
@@ -7,17 +6,7 @@ import { ComminicateService } from 'src/app/services/comminicate/comminicate.ser
   styleUrls: ['./navi.component.css'],
 })
 export class NaviComponent implements OnInit {
-  data: any;
-  constructor(private commService: ComminicateService) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  onInput(event: any) {
-    this.data = event.target.value;
-    this.submitInput();
-  }
-
-  submitInput() {
-    this.commService.innerMethod(this.data);
-  }
 }

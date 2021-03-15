@@ -1,14 +1,14 @@
 <ul class="list-group">
   <li
     (click)="clearCurrentSort()"
-    routerLink="/tissues"
+
     [class]="checkCurrentSort()"
   >
-    All Tissues
+    All Sorts
   </li>
   <li
     (click)="setCurrentSort(sort)"
-    routerLink="/tissues/sort/{{ sort.id }}"
+    
     *ngFor="let sort of sorts"
     [class]="getCurrentSort(sort)"
   >
