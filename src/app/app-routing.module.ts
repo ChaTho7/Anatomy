@@ -18,6 +18,10 @@ const routes: Routes = [
     component: TissueComponent,
   },
   {
+    path: 'tissues/region/:regionId',
+    component: TissueComponent,
+  },
+  {
     path: 'tissues/:tissueId',
     component: TissueImageComponent,
   },

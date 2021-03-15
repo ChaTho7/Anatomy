@@ -22,7 +22,6 @@ export class SortComponent implements OnInit {
 
   getSorts() {
     this.sortService.getSorts().subscribe((response) => {
-      console.log('123');
       this.sorts = response.data;
       this.dataLoaded = true;
     });

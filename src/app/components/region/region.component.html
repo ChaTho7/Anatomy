@@ -1,0 +1,17 @@
+<ul class="list-group">
+  <li
+    (click)="clearCurrentRegion()"
+    routerLink="/tissues"
+    [class]="checkCurrentRegion()"
+  >
+    All Regions
+  </li>
+  <li
+    (click)="setCurrentRegion(region)"
+    routerLink="/tissues/region/{{ region.id }}"
+    *ngFor="let region of regions"
+    [class]="getCurrentRegion(region)"
+  >
+    {{ region.name }}
+  </li>
+</ul>

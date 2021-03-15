@@ -8,6 +8,7 @@ import { SortComponent } from './components/sort/sort.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TissueImageComponent } from './components/tissueImage/tissueImage.component';
+import { RegionComponent } from './components/region/region.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TissueImageComponent } from './components/tissueImage/tissueImage.compo
     TissueComponent,
     SortComponent,
     NaviComponent,
-    TissueImageComponent
+    TissueImageComponent,
+    RegionComponent
   ],
   imports: [
     BrowserModule,

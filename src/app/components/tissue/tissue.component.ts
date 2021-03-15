@@ -23,6 +23,8 @@ export class TissueComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params['sortId']) {
         this.getTissuesBySort(params['sortId']);
+      } else if (params['regionId']) {
+        this.getTissuesByRegion(params['regionId']);
       } else {
         this.getTissues();
       }
@@ -38,6 +40,13 @@ export class TissueComponent implements OnInit {
 
   getTissuesBySort(sortId: number) {
     this.tissueService.getTissuesBySort(sortId).subscribe((response) => {
+      this.tissuesDetail = response.data;
+      this.dataLoaded = true;
+    });
+  }
+
+  getTissuesByRegion(regionId: number) {
+    this.tissueService.getTissuesByRegion(regionId).subscribe((response) => {
       this.tissuesDetail = response.data;
       this.dataLoaded = true;
     });
