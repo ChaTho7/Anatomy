@@ -6,14 +6,21 @@
 <div class="container">
   <app-navi></app-navi>
 
-  <div class="row">
+  <div class="row" *ngIf="loggedIn == false">
+    <app-login></app-login>
+    <button (click)="login()">LOGIN</button>
+  </div>
+
+  <div class="row" *ngIf="loggedIn == true">
     <div class="col-md-4">
       <app-sort></app-sort>
-      <br>
+      <br />
       <app-region></app-region>
     </div>
     <div class="col-md-8">
       <router-outlet></router-outlet>
     </div>
+    <br />
+    <button (click)="logout()">LOGOUT</button>
   </div>
 </div>

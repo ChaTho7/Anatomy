@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Anatomy';
+  loggedIn: boolean = false;
 
+  login() {
+    this.loggedIn = true;
+  }
+
+  logout() {
+    this.loggedIn = false;
+  }
 }

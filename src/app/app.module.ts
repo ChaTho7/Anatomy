@@ -9,6 +9,7 @@ import { NaviComponent } from './components/navi/navi.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TissueImageComponent } from './components/tissueImage/tissueImage.component';
 import { RegionComponent } from './components/region/region.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegionComponent } from './components/region/region.component';
     SortComponent,
     NaviComponent,
     TissueImageComponent,
-    RegionComponent
+    RegionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
