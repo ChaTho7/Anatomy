@@ -13,6 +13,7 @@ export class SortComponent implements OnInit {
   dataLoaded = false;
   sorts: Sort[] = [];
   currentSort: Sort;
+  filterText = '';
   private comService = ComminicateService;
 
   constructor(private sortService: SortService, private router: Router) {}
@@ -69,4 +70,11 @@ export class SortComponent implements OnInit {
       reader.readAsText(input.files[index]);
     }
   }
+
+  /*   element() {
+    let elm = <number>(
+      (<unknown>(<HTMLInputElement>document.getElementById('sort')).value)
+    );
+    this.setCurrentSort(elm);
+  } */
 }

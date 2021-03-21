@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { TissueDetail } from '../models/tissueDetail';
 
 @Pipe({
-  name: 'filterPipe',
+  name: 'tissueFilterPipe',
 })
 export class FilterPipePipe implements PipeTransform {
   transform(value: TissueDetail[], filterText: string): TissueDetail[] {

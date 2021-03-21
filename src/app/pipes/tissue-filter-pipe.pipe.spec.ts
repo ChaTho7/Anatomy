@@ -1,6 +1,6 @@
-import { FilterPipePipe } from './filter-pipe.pipe';
+import { FilterPipePipe } from './tissue-filter-pipe.pipe';
 
-describe('FilterPipePipe', () => {
+describe('TissueFilterPipePipe', () => {
   it('create an instance', () => {
     const pipe = new FilterPipePipe();
     expect(pipe).toBeTruthy();

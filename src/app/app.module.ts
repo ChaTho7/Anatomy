@@ -12,9 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { TissueImageComponent } from './components/tissueImage/tissueImage.component';
 import { RegionComponent } from './components/region/region.component';
 import { LoginComponent } from './components/login/login.component';
-import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { FilterPipePipe } from './pipes/tissue-filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
+import { SortFilterPipePipe } from './pipes/sort-filter-pipe.pipe';
+import { RegionFilterPipePipe } from './pipes/region-filter-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     RegionComponent,
     LoginComponent,
     FilterPipePipe,
+    SortFilterPipePipe,
+    RegionFilterPipePipe,
   ],
   imports: [
     BrowserModule,

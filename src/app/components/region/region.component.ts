@@ -13,6 +13,7 @@ export class RegionComponent implements OnInit {
   dataLoaded = false;
   regions: Region[] = [];
   currentRegion: Region;
+  filterText = '';
   private comService = ComminicateService;
 
   constructor(private regionService: RegionService, private router: Router) {}

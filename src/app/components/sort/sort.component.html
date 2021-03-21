@@ -1,19 +1,36 @@
+<div class="mb-3">
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="filterText"
+    id="filterText"
+    placeholder="Sort Name"
+  />
+</div>
 <ul class="list-group">
-  <li
-    (click)="clearCurrentSort()"
-
-    [class]="checkCurrentSort()"
-  >
-    All Sorts
-  </li>
+  <li (click)="clearCurrentSort()" [class]="checkCurrentSort()">All Sorts</li>
   <li
     (click)="setCurrentSort(sort)"
-    
-    *ngFor="let sort of sorts"
+    *ngFor="let sort of sorts | sortFilterPipe: filterText"
     [class]="getCurrentSort(sort)"
   >
     {{ sort.name }}
   </li>
+  <!-- <select
+    class="form-select"
+    aria-label="Disabled select example"
+    id="sort"
+    (click)="element()"
+  >
+    <option selected></option>
+    <option
+      *ngFor="let sort of sorts | sortFilterPipe: filterText"
+      [class]="getCurrentSort(sort)"
+      value="{{ sort.id }}"
+    >
+      {{ sort.name }}
+    </option>
+  </select> -->
 </ul>
 
 <!-- <input type="file" (change)="openFile($event)" /> <br /><br /><br />

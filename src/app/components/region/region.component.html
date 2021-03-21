@@ -1,15 +1,19 @@
+<div class="mb-3">
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="filterText"
+    id="filterText"
+    placeholder="Region Name"
+  />
+</div>
 <ul class="list-group">
-  <li
-    (click)="clearCurrentRegion()"
-
-    [class]="checkCurrentRegion()"
-  >
+  <li (click)="clearCurrentRegion()" [class]="checkCurrentRegion()">
     All Regions
   </li>
   <li
     (click)="setCurrentRegion(region)"
-    
-    *ngFor="let region of regions"
+    *ngFor="let region of regions | regionFilterPipe: filterText"
     [class]="getCurrentRegion(region)"
   >
     {{ region.name }}
