@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,9 @@ import { FilterPipePipe } from './pipes/tissue-filter-pipe.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { SortFilterPipePipe } from './pipes/sort-filter-pipe.pipe';
 import { RegionFilterPipePipe } from './pipes/region-filter-pipe.pipe';
+import { BaseComponent } from './components/base/base.component';
+import { TissuesComponent } from './components/tissues/tissues.component';
+import { TissueAddComponent } from './components/tissue-add/tissue-add.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { RegionFilterPipePipe } from './pipes/region-filter-pipe.pipe';
     FilterPipePipe,
     SortFilterPipePipe,
     RegionFilterPipePipe,
+    BaseComponent,
+    TissuesComponent,
+    TissueAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,7 @@ import { RegionFilterPipePipe } from './pipes/region-filter-pipe.pipe';
       positionClass: 'toast-bottom-right',
     }),
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

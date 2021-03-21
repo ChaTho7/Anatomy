@@ -8,19 +8,16 @@
 
   <div class="row" *ngIf="loggedIn == false">
     <app-login></app-login>
-    <button (click)="login()">LOGIN</button>
+    <button class="w-100 btn btn-lg btn-primary" (click)="login()">
+      LOGIN
+    </button>
   </div>
 
   <div class="row" *ngIf="loggedIn == true">
-    <div class="col-md-4">
-      <app-sort></app-sort>
-      <br />
-      <app-region></app-region>
-    </div>
-    <div class="col-md-8">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
     <br />
-    <button (click)="logout()">LOGOUT</button>
+    <button class="w-100 btn btn-lg btn-primary" (click)="logout()">
+      LOGOUT
+    </button>
   </div>
 </div>

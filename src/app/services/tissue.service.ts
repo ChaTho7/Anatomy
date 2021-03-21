@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 import { Tissue } from '../models/tissue';
 import { TissueDetail } from '../models/tissueDetail';
 
@@ -55,6 +56,13 @@ export class TissueService {
       tissueBySort_RegionApiUrl1 + '&regionId=' + regionId;
     return this.httpClient.get<ListResponseModel<TissueDetail>>(
       tissueBySort_RegionApiUrl
+    );
+  }
+
+  postTissue(tissue: Tissue): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      this.apiURL + 'tissues/add',
+      tissue
     );
   }
 }

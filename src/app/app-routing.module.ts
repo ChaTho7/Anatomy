@@ -1,33 +1,39 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TissueComponent } from './components/tissue/tissue.component';
+import { BaseComponent } from './components/base/base.component';
+import { TissuesComponent } from './components/tissues/tissues.component';
 import { TissueImageComponent } from './components/tissueImage/tissueImage.component';
+import { TissueAddComponent } from './components/tissue-add/tissue-add.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: TissueComponent,
+    component: BaseComponent,
   },
   {
     path: 'tissues',
-    component: TissueComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/sort/:sortId',
-    component: TissueComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/region/:regionId',
-    component: TissueComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/sort_region/:sortId/:regionId',
-    component: TissueComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/:tissueId',
     component: TissueImageComponent,
+  },
+  {
+    path: 'tissueAdd',
+    component: TissueAddComponent,
   },
 ];
 
