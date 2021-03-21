@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Tissue } from 'src/app/models/tissue';
 import { TissueDetail } from 'src/app/models/tissueDetail';
-import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 import { TissueService } from 'src/app/services/tissue.service';
 
 @Component({
@@ -14,10 +14,12 @@ export class TissueComponent implements OnInit {
   tissues: Tissue[];
   tissuesDetail: TissueDetail[];
   dataLoaded = false;
+  filterText = '';
 
   constructor(
     private tissueService: TissueService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -67,5 +69,9 @@ export class TissueComponent implements OnInit {
         this.tissuesDetail = response.data;
         this.dataLoaded = true;
       });
+  }
+
+  alert(tissueDetail: TissueDetail) {
+    this.toastrService.success('Details shown...', tissueDetail.name);
   }
 }
