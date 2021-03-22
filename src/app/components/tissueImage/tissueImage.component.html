@@ -2,15 +2,23 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>TissueId</th>
-      <th>Date</th>
+      <th>Name</th>
+      <th>Sort</th>
+      <th>Region</th>
+      <th>Gender</th>
+      <th>Origin</th>
     </tr>
   </thead>
-  <tr *ngFor="let tissueImage of tissueImages">
-    <td>{{ tissueImage.id }}</td>
-    <td>{{ tissueImage.tissueId }}</td>
-    <td>{{ tissueImage.date }}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let crrntTissue of currentTissue">
+      <td>{{ crrntTissue.id }}</td>
+      <td>{{ crrntTissue.name }}</td>
+      <td>{{ crrntTissue.sort }}</td>
+      <td>{{ crrntTissue.region }}</td>
+      <td>{{ crrntTissue.gender }}</td>
+      <td>{{ crrntTissue.origin }}</td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- <br />

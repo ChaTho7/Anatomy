@@ -26,6 +26,13 @@ export class TissueService {
     );
   }
 
+  getTissuesById(id: number): Observable<ListResponseModel<TissueDetail>> {
+    let tissueBySortApiUrl = this.apiURL + 'tissues/getbyfilter?id=' + id;
+    return this.httpClient.get<ListResponseModel<TissueDetail>>(
+      tissueBySortApiUrl
+    );
+  }
+
   getTissuesBySort(
     sortId: number
   ): Observable<ListResponseModel<TissueDetail>> {
