@@ -4,7 +4,6 @@ import { BaseComponent } from './components/base/base.component';
 import { TissuesComponent } from './components/tissues/tissues.component';
 import { TissueImageComponent } from './components/tissueImage/tissueImage.component';
 import { TissueAddComponent } from './components/tissue-add/tissue-add.component';
-import { TissueComponent } from './components/tissue/tissue.component';
 
 const routes: Routes = [
   {
@@ -14,19 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'tissues',
-    component: BaseComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/sort/:sortId',
-    component: BaseComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/region/:regionId',
-    component: BaseComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/sort_region/:sortId/:regionId',
-    component: BaseComponent,
+    component: TissuesComponent,
   },
   {
     path: 'tissues/:tissueId',
