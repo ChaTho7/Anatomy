@@ -10,8 +10,8 @@
 <ul class="list-group">
   <li (click)="clearCurrentSort()" [class]="checkCurrentSort()">All Sorts</li>
   <li
-    (click)="setCurrentSort(sort)"
     *ngFor="let sort of sorts | sortFilterPipe: filterText"
+    (click)="setCurrentSort(sort)"
     [class]="getCurrentSort(sort)"
   >
     {{ sort.name }}

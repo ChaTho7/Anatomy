@@ -12,7 +12,6 @@ import { SortService } from 'src/app/services/sort.service';
 export class SortComponent implements OnInit {
   dataLoaded = false;
   sorts: Sort[] = [];
-  currentSort: Sort;
   filterText = '';
   private comService = ComminicateService;
 
@@ -30,13 +29,12 @@ export class SortComponent implements OnInit {
   }
 
   setCurrentSort(sort: Sort) {
-    this.currentSort = sort;
     this.comService.sortId = sort.id;
     this.comService.filterRouter(this.router);
   }
 
   getCurrentSort(sort: Sort) {
-    if (sort == this.currentSort) {
+    if (sort.id == this.comService.sortId) {
       return 'list-group-item active';
     } else {
       return 'list-group-item';
@@ -44,7 +42,7 @@ export class SortComponent implements OnInit {
   }
 
   checkCurrentSort() {
-    if (!this.currentSort || this.currentSort.id == 0) {
+    if (this.comService.sortId == 0 || !this.comService.sortId) {
       return 'list-group-item active';
     } else {
       return 'list-group-item';
@@ -52,7 +50,6 @@ export class SortComponent implements OnInit {
   }
 
   clearCurrentSort() {
-    this.currentSort = { id: 0, name: '', origin: '' };
     this.comService.sortId = 0;
     this.comService.filterRouter(this.router);
   }
