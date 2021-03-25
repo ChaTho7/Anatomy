@@ -20,6 +20,8 @@ import { RegionFilterPipePipe } from './pipes/region-filter-pipe.pipe';
 import { BaseComponent } from './components/base/base.component';
 import { TissuesComponent } from './components/tissues/tissues.component';
 import { TissueAddComponent } from './components/tissue-add/tissue-add.component';
+import { TissueImageAddComponent } from './components/tissue-image-add/tissue-image-add.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { TissueAddComponent } from './components/tissue-add/tissue-add.component
     BaseComponent,
     TissuesComponent,
     TissueAddComponent,
+    TissueImageAddComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,12 +4,23 @@ import { BaseComponent } from './components/base/base.component';
 import { TissuesComponent } from './components/tissues/tissues.component';
 import { TissueImageComponent } from './components/tissueImage/tissueImage.component';
 import { TissueAddComponent } from './components/tissue-add/tissue-add.component';
+import { TissueImageAddComponent } from './components/tissue-image-add/tissue-image-add.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     component: BaseComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'tissues',
@@ -34,6 +45,10 @@ const routes: Routes = [
   {
     path: 'tissueAdd',
     component: TissueAddComponent,
+  },
+  {
+    path: 'tissueImageAdd',
+    component: TissueImageAddComponent,
   },
 ];
 

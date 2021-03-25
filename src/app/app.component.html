@@ -6,18 +6,33 @@
 <div class="container">
   <app-navi></app-navi>
 
-  <div class="row" *ngIf="loggedIn == false">
-    <app-login></app-login>
-    <button class="w-100 btn btn-lg btn-primary" (click)="login()">
-      LOGIN
+  <div class="row">
+    <button
+      class="w-100 btn btn-lg btn-primary"
+      (click)="login()"
+      routerLink="/login"
+    >
+      Sign In
     </button>
   </div>
+  <br />
 
-  <div class="row" *ngIf="loggedIn == true">
+  <div class="row">
+    <button
+      class="w-100 btn btn-lg btn-primary"
+      (click)="login()"
+      routerLink="/register"
+    >
+      Register
+    </button>
+  </div>
+  <br />
+
+  <div class="row">
     <router-outlet></router-outlet>
     <br />
-    <button class="w-100 btn btn-lg btn-primary" (click)="logout()">
+    <!-- <button class="w-100 btn btn-lg btn-primary" (click)="logout()">
       LOGOUT
-    </button>
+    </button> -->
   </div>
 </div>

@@ -1,0 +1,38 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Add Tissue Image</h5></div>
+      <div class="card-body">
+        <form [formGroup]="tissueImageAddForm">
+          <div class="mb-3">
+            <label for="tissueId">Tissue Id</label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="number"
+                id="tissueId"
+                formControlName="tissueId"
+                placeholder="Tissue Id"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="imageFile">Tissue Image</label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="file"
+                id="imageFile"
+                formControlName="image"
+                accept="image/*"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="add()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
