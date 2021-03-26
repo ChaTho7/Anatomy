@@ -7,6 +7,7 @@ import { TissueAddComponent } from './components/tissue-add/tissue-add.component
 import { TissueImageAddComponent } from './components/tissue-image-add/tissue-image-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -45,10 +46,12 @@ const routes: Routes = [
   {
     path: 'tissueAdd',
     component: TissueAddComponent,
+    canActivate: [LoginGuard],
   },
   {
     path: 'tissueImageAdd',
     component: TissueImageAddComponent,
+    canActivate: [LoginGuard],
   },
 ];
 

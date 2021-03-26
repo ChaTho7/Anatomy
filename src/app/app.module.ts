@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { TissueComponent } from './components/tissue/tissue.component';
 import { SortComponent } from './components/sort/sort.component';
 import { NaviComponent } from './components/navi/navi.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TissueImageComponent } from './components/tissueImage/tissueImage.component';
 import { RegionComponent } from './components/region/region.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,6 +22,7 @@ import { TissuesComponent } from './components/tissues/tissues.component';
 import { TissueAddComponent } from './components/tissue-add/tissue-add.component';
 import { TissueImageAddComponent } from './components/tissue-image-add/tissue-image-add.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,13 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
