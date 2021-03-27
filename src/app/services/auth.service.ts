@@ -20,8 +20,11 @@ export class AuthService {
     );
   }
 
-  register(user: RegisterModel) {
-    return this.httpClient.post(this.apiURL + 'register', user);
+  register(user: RegisterModel): Observable<SingleResponseModel<TokenModel>> {
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(
+      this.apiURL + 'register',
+      user
+    );
   }
 
   isAuthenticated() {

@@ -1,1 +1,51 @@
-<p>register works!</p>
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="registerForm">
+      <h1 class="h3 mb-3 fw-normal">Register</h1>
+
+      <div class="form-floating">
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control"
+          id="floatingName"
+          placeholder="Name"
+        />
+        <label for="floatingName">Name</label>
+      </div>
+      <div class="form-floating">
+        <input
+          formControlName="surname"
+          type="text"
+          class="form-control"
+          id="floatingSurname"
+          placeholder="Surname"
+        />
+        <label for="floatingSurname">Surname</label>
+      </div>
+      <div class="form-floating">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="floatingEmail"
+          placeholder="name@example.com"
+        />
+        <label for="floatingEmail">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" (click)="register()">
+        Register
+      </button>
+    </form>
+  </main>
+</body>
