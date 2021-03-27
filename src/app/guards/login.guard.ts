@@ -27,7 +27,10 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.authService.isAuthenticated()) {
+    if (
+      this.authService.isAuthenticated() &&
+      !this.authService.isTokenExpired()
+    ) {
       return true;
     } else {
       this.router.navigate(['login']);

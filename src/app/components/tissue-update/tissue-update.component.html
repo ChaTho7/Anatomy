@@ -1,0 +1,76 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Update Tissue</h5></div>
+      <div class="card-body">
+        <form [formGroup]="tissueUpdateForm">
+          <div class="mb-3">
+            <label for="tissueId">Tissue Id</label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="number"
+                id="tissueId"
+                formControlName="id"
+                placeholder="Id"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="tissueName">Tissue Name</label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                id="tissueName"
+                formControlName="name"
+                placeholder="Tissue Name"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="regionId">Region</label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="number"
+                id="regionId"
+                formControlName="regionId"
+                placeholder="Region Id"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="sortId">Sort</label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="number"
+                id="sortId"
+                formControlName="sortId"
+                placeholder="Sort Id"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="tissueGender">Gender</label>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                id="tissueGender"
+                formControlName="gender"
+                placeholder="Tissue Gender"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="update()">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

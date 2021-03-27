@@ -15,6 +15,7 @@ import { TissueImageService } from 'src/app/services/tissueImage.service';
 })
 export class TissueImageAddComponent implements OnInit {
   tissueImageAddForm: FormGroup;
+  theFile: any;
   constructor(
     private formBuilder: FormBuilder,
     private tissueImageService: TissueImageService,
@@ -32,10 +33,22 @@ export class TissueImageAddComponent implements OnInit {
     });
   }
 
+  setFile(event: any) {
+    this.theFile = null;
+    if (event.target.files && event.target.files.length > 0) {
+      this.theFile = event.target.files[0];
+    } else {
+      this.toastrService.error('You have to select an image !');
+    }
+  }
+
   add() {
     if (this.tissueImageAddForm.valid) {
       let tissueImageModel = Object.assign({}, this.tissueImageAddForm.value);
-      this.tissueImageService.postTissueImages(tissueImageModel).subscribe(
+      const formData: FormData = new FormData();
+      formData.append('formFile', this.theFile);
+      formData.append('tissueId', tissueImageModel.tissueId.toString());
+      this.tissueImageService.postTissueImages(formData).subscribe(
         (data) => {
           this.toastrService.success(data.message, 'SUCCESS');
         },

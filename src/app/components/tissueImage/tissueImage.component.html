@@ -7,6 +7,7 @@
       <th>Region</th>
       <th>Gender</th>
       <th>Origin</th>
+      <th>Update Tissue</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,15 @@
       <td>{{ crrntTissue.region }}</td>
       <td>{{ crrntTissue.gender }}</td>
       <td>{{ crrntTissue.origin }}</td>
+      <td>
+        <button
+          type="button"
+          class="w-75 btn btn-outline-success"
+          routerLink="/tissueUpdate"
+        >
+          Update
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -36,19 +46,21 @@
 <br />
 
 <div class="row">
-  <div class="col-sm-3 right">
+  <div class="col-sm-4 right">
     <div
       id="carouselExampleControls"
       class="carousel slide"
       data-bs-ride="carousel"
     >
       <div class="carousel-inner">
-        <div class="carousel-item active">
+        <div
+          [class]="checkCurrentImage(tissueImage)"
+          *ngFor="let tissueImage of tissueImages"
+        >
           <img
             class="d-block w-100"
-            *ngFor="let tissueImage of tissueImages"
             src="{{ 'data:image/jpg;base64,' + tissueImage.image }}"
-            height="250"
+            height="350"
           />
         </div>
       </div>

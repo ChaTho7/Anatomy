@@ -34,4 +34,18 @@ export class AuthService {
       return false;
     }
   }
+
+  isTokenExpired(): boolean {
+    let expirationDateString = localStorage.getItem('token_expiration');
+    if (expirationDateString) {
+      if (expirationDateString > new Date().toDateString()) {
+        return false;
+      } else {
+        localStorage.removeItem('token_expiration');
+        return true;
+      }
+    } else {
+      return true;
+    }
+  }
 }

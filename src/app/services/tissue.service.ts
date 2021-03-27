@@ -72,4 +72,11 @@ export class TissueService {
       tissue
     );
   }
+
+  updateTissue(tissue: Tissue): Observable<ResponseModel> {
+    return this.httpClient.put<ResponseModel>(
+      this.apiURL + 'tissues/update',
+      tissue
+    );
+  }
 }

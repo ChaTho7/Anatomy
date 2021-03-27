@@ -159,6 +159,12 @@
                   </button>
                   <button
                     class="w-100 btn btn-outline-success"
+                    routerLink="/tissueUpdate"
+                  >
+                    Tissue Update
+                  </button>
+                  <button
+                    class="w-100 btn btn-outline-success"
                     routerLink="/tissueImageAdd"
                   >
                     Tissue Image Add
@@ -187,6 +193,7 @@
                   </button>
                 </h2>
                 <div
+                  *ngIf="!isSessionActive()"
                   id="flush-collapseFour"
                   class="accordion-collapse collapse"
                   aria-labelledby="flush-headingFour"
@@ -195,7 +202,6 @@
                   <div class="accordion-body">
                     <button
                       class="w-100 btn btn-outline-info"
-                      (click)="login()"
                       routerLink="/login"
                     >
                       Sign In
@@ -204,10 +210,57 @@
 
                     <button
                       class="w-100 btn btn-outline-info"
-                      (click)="login()"
                       routerLink="/register"
                     >
                       Register
+                    </button>
+                  </div>
+                </div>
+                <div
+                  *ngIf="isSessionActive()"
+                  id="flush-collapseFour"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingFour"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingFive">
+                        <button
+                          class="accordion-button collapsed text-white"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseFive"
+                          aria-expanded="false"
+                          aria-controls="flush-collapseFive"
+                        >
+                          <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#people-circle" />
+                          </svg>
+                          User
+                        </button>
+                      </h2>
+                      <div
+                        id="flush-collapseFive"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingFive"
+                        data-bs-parent="#accordionFlushExample"
+                      >
+                        <div class="accordion-body">
+                          <button
+                            class="w-100 btn btn-outline-info"
+                            routerLink="/"
+                          >
+                            Profile
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      class="w-100 btn btn-outline-danger"
+                      (click)="logout()"
+                    >
+                      Logout
                     </button>
                   </div>
                 </div>

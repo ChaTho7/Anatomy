@@ -11,8 +11,8 @@
                 class="form-control"
                 type="number"
                 id="tissueId"
-                formControlName="tissueId"
                 placeholder="Tissue Id"
+                formControlName="tissueId"
               />
             </div>
           </div>
@@ -24,6 +24,7 @@
                 type="file"
                 id="imageFile"
                 formControlName="image"
+                (change)="setFile($event)"
                 accept="image/*"
               />
             </div>

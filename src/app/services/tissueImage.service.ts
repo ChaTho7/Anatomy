@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
@@ -22,10 +22,10 @@ export class TissueImageService {
     );
   }
 
-  postTissueImages(tissueImage: TissueImage): Observable<ResponseModel> {
+  postTissueImages(formData: FormData): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(
       this.apiURL + 'addimage',
-      tissueImage
+      formData
     );
   }
 }

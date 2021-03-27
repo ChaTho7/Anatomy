@@ -39,6 +39,10 @@ export class LoginComponent implements OnInit {
         (data) => {
           this.toastrService.info(data.message);
           localStorage.setItem('token', data.data.token);
+          localStorage.setItem(
+            'token_expiration',
+            data.data.expiration.toDateString()
+          );
         },
         (errorResponse) => {
           this.toastrService.error(errorResponse.error);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TissueDetail } from 'src/app/models/tissueDetail';
 import { TissueImage } from 'src/app/models/tissueImage';
+import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 import { TissueService } from 'src/app/services/tissue.service';
 import { TissueImageService } from 'src/app/services/tissueImage.service';
 
@@ -18,7 +19,8 @@ export class TissueImageComponent implements OnInit {
   constructor(
     private tissueImageService: TissueImageService,
     private tissueService: TissueService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private commService: ComminicateService
   ) {}
 
   ngOnInit(): void {
@@ -39,5 +41,13 @@ export class TissueImageComponent implements OnInit {
       this.tissueImages = response.data;
       this.dataLoaded = true;
     });
+  }
+
+  checkCurrentImage(tissueImage: TissueImage) {
+    if (tissueImage === this.tissueImages[0]) {
+      return 'carousel-item active';
+    } else {
+      return 'carousel-item';
+    }
   }
 }

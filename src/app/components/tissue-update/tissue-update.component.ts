@@ -6,38 +6,43 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { TissueDetail } from 'src/app/models/tissueDetail';
+import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
 import { TissueService } from 'src/app/services/tissue.service';
 
 @Component({
-  selector: 'app-tissue-add',
-  templateUrl: './tissue-add.component.html',
-  styleUrls: ['./tissue-add.component.css'],
+  selector: 'app-tissue-update',
+  templateUrl: './tissue-update.component.html',
+  styleUrls: ['./tissue-update.component.css'],
 })
-export class TissueAddComponent implements OnInit {
-  tissueAddForm: FormGroup;
+export class TissueUpdateComponent implements OnInit {
+  tissueUpdateForm: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private tissueService: TissueService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private commService: ComminicateService
   ) {}
 
   ngOnInit(): void {
-    this.createTissueAddForm();
+    this.createTissueUpdateForm();
   }
 
-  createTissueAddForm() {
-    this.tissueAddForm = this.formBuilder.group({
-      sortId: ['', Validators.required],
-      regionId: ['', Validators.required],
+  createTissueUpdateForm() {
+    this.tissueUpdateForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      sortId: [0, Validators.required],
+      regionId: [0, Validators.required],
       name: ['', Validators.required],
-      gender: [''],
+      gender: ['', Validators.required],
     });
   }
 
-  add() {
-    if (this.tissueAddForm.valid) {
-      let tissueModel = Object.assign({}, this.tissueAddForm.value);
-      this.tissueService.postTissue(tissueModel).subscribe(
+  update() {
+    if (this.tissueUpdateForm.valid) {
+      let tissueModel = Object.assign({}, this.tissueUpdateForm.value);
+      this.tissueService.updateTissue(tissueModel).subscribe(
         (data) => {
           this.toastrService.success(data.message, 'SUCCESS');
         },
