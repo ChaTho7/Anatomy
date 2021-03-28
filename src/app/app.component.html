@@ -53,11 +53,10 @@
         class="w-100 btn btn-outline-dark"
         data-bs-toggle="collapse"
         href="#mainMenuCollapse"
-        aria-expanded="fasle"
+        aria-expanded="false"
         aria-controls="multiCollapseExample1"
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
           fill="currentColor"
@@ -70,14 +69,18 @@
           />
         </svg>
       </button>
-      <div class="collapse multi-collapse" id="mainMenuCollapse">
+      <div class="collapse show multi-collapse" id="mainMenuCollapse">
         <div class="d-flex flex-column p-3 text-white bg-dark">
           <a
             class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
           >
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap" />
-            </svg>
+            <img
+              src="https://icon-library.com/images/intruder-icon/intruder-icon-21.jpg"
+              alt="mdo"
+              width="32"
+              height="32"
+              class="rounded-circle me-2"
+            />
             <span class="fs-4">Main Menu</span>
           </a>
           <hr />
@@ -249,7 +252,7 @@
                         <div class="accordion-body">
                           <button
                             class="w-100 btn btn-outline-info"
-                            routerLink="/"
+                            routerLink="/profile"
                           >
                             Profile
                           </button>
@@ -273,10 +276,6 @@
 
     <div class="col-md-9">
       <router-outlet></router-outlet>
-      <br />
-      <!-- <button class="w-100 btn btn-lg btn-primary" (click)="logout()">
-      LOGOUT
-    </button> -->
     </div>
   </div>
 

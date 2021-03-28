@@ -38,10 +38,10 @@ export class AuthService {
   isTokenExpired(): boolean {
     let expirationDateString = localStorage.getItem('token_expiration');
     if (expirationDateString) {
-      if (expirationDateString > new Date().toDateString()) {
+      if (expirationDateString > new Date().toLocaleString()) {
         return false;
       } else {
-        localStorage.removeItem('token_expiration');
+        localStorage.removeItem('tokn_expiration');
         return true;
       }
     } else {

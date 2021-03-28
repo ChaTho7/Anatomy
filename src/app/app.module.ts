@@ -24,6 +24,7 @@ import { TissueImageAddComponent } from './components/tissue-image-add/tissue-im
 import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TissueUpdateComponent } from './components/tissue-update/tissue-update.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { TissueUpdateComponent } from './components/tissue-update/tissue-update.
     TissueImageAddComponent,
     RegisterComponent,
     TissueUpdateComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
