@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -45,12 +44,17 @@ export class LoginComponent implements OnInit {
             'token_expiration',
             token_expiration.toLocaleString()
           );
-          UserService.currentUser.email = loginModel.email;
+          localStorage.setItem('userEmail', loginModel.email);
+          this.refreshPage();
         },
         (errorResponse) => {
           this.toastrService.error(errorResponse.error);
         }
       );
     }
+  }
+
+  refreshPage() {
+    window.location.reload();
   }
 }

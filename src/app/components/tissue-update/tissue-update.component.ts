@@ -6,8 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Region } from 'src/app/models/region';
+import { Sort } from 'src/app/models/sort';
 import { TissueDetail } from 'src/app/models/tissueDetail';
-import { ComminicateService } from 'src/app/services/comminicate/comminicate.service';
+import { RegionService } from 'src/app/services/region.service';
+import { SortService } from 'src/app/services/sort.service';
 import { TissueService } from 'src/app/services/tissue.service';
 
 @Component({
@@ -17,26 +20,57 @@ import { TissueService } from 'src/app/services/tissue.service';
 })
 export class TissueUpdateComponent implements OnInit {
   tissueUpdateForm: FormGroup;
+  sorts: Sort[] = [];
+  regions: Region[] = [];
+  tissues: TissueDetail[] = [];
+  emptyString: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private tissueService: TissueService,
     private toastrService: ToastrService,
-    private commService: ComminicateService
+    private sortService: SortService,
+    private regionService: RegionService
   ) {}
 
   ngOnInit(): void {
     this.createTissueUpdateForm();
+    this.getSorts();
+    this.getRegions();
+    this.getTissues();
+  }
+
+  getTissues() {
+    this.tissueService.getTissuesDetail().subscribe((data) => {
+      this.tissues = data.data;
+    });
+  }
+
+  getSorts() {
+    this.sortService.getSorts().subscribe((data) => {
+      this.sorts = data.data;
+    });
+  }
+
+  getRegions() {
+    this.regionService.getRegions().subscribe((data) => {
+      this.regions = data.data;
+    });
   }
 
   createTissueUpdateForm() {
     this.tissueUpdateForm = this.formBuilder.group({
       id: ['', Validators.required],
-      sortId: [0, Validators.required],
-      regionId: [0, Validators.required],
+      sortId: ['', Validators.required],
+      regionId: ['', Validators.required],
       name: ['', Validators.required],
       gender: ['', Validators.required],
     });
+  }
+
+  update1() {
+    let tissueModel = Object.assign({}, this.tissueUpdateForm.value);
+    console.log(tissueModel);
   }
 
   update() {

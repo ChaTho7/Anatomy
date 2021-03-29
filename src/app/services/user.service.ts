@@ -8,16 +8,11 @@ import { UserModel } from '../models/userModel';
   providedIn: 'root',
 })
 export class UserService {
-  static currentUser: UserModel = { email: '', name: '', surname: '' };
-  constructor(private httpClient: HttpClient) {
-    this.getUser(UserService.currentUser.email).subscribe((response) => {
-      UserService.currentUser = response.data;
-    });
-  }
+  constructor(private httpClient: HttpClient) {}
 
   apiURL = 'https://localhost:44344/api/users/';
 
-  getUser(email: string): Observable<SingleResponseModel<UserModel>> {
+  getUser(email: string | null): Observable<SingleResponseModel<UserModel>> {
     return this.httpClient.get<SingleResponseModel<UserModel>>(
       this.apiURL + 'getuser?email=' + email
     );

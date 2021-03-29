@@ -6,6 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Region } from 'src/app/models/region';
+import { Sort } from 'src/app/models/sort';
+import { RegionService } from 'src/app/services/region.service';
+import { SortService } from 'src/app/services/sort.service';
 import { TissueService } from 'src/app/services/tissue.service';
 
 @Component({
@@ -15,14 +19,34 @@ import { TissueService } from 'src/app/services/tissue.service';
 })
 export class TissueAddComponent implements OnInit {
   tissueAddForm: FormGroup;
+  sorts: Sort[] = [];
+  regions: Region[] = [];
+  emptyString: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private tissueService: TissueService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private sortService: SortService,
+    private regionService: RegionService
   ) {}
 
   ngOnInit(): void {
     this.createTissueAddForm();
+    this.getSorts();
+    this.getRegions();
+  }
+
+  getSorts() {
+    this.sortService.getSorts().subscribe((data) => {
+      this.sorts = data.data;
+    });
+  }
+
+  getRegions() {
+    this.regionService.getRegions().subscribe((data) => {
+      this.regions = data.data;
+    });
   }
 
   createTissueAddForm() {

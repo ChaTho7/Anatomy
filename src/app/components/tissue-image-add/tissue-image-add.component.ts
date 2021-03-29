@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { TissueDetail } from 'src/app/models/tissueDetail';
+import { TissueService } from 'src/app/services/tissue.service';
 import { TissueImageService } from 'src/app/services/tissueImage.service';
 
 @Component({
@@ -15,15 +17,24 @@ import { TissueImageService } from 'src/app/services/tissueImage.service';
 })
 export class TissueImageAddComponent implements OnInit {
   tissueImageAddForm: FormGroup;
-  theFile: any;
+  file: any;
+  tissues: TissueDetail[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private tissueImageService: TissueImageService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private tissueService: TissueService
   ) {}
 
   ngOnInit(): void {
     this.createTissueImageAddForm();
+    this.getTissues();
+  }
+
+  getTissues() {
+    this.tissueService.getTissuesDetail().subscribe((data) => {
+      this.tissues = data.data;
+    });
   }
 
   createTissueImageAddForm() {
@@ -34,9 +45,9 @@ export class TissueImageAddComponent implements OnInit {
   }
 
   setFile(event: any) {
-    this.theFile = null;
+    this.file = null;
     if (event.target.files && event.target.files.length > 0) {
-      this.theFile = event.target.files[0];
+      this.file = event.target.files[0];
     } else {
       this.toastrService.error('You have to select an image !');
     }
@@ -46,7 +57,7 @@ export class TissueImageAddComponent implements OnInit {
     if (this.tissueImageAddForm.valid) {
       let tissueImageModel = Object.assign({}, this.tissueImageAddForm.value);
       const formData: FormData = new FormData();
-      formData.append('formFile', this.theFile);
+      formData.append('formFile', this.file);
       formData.append('tissueId', tissueImageModel.tissueId.toString());
       this.tissueImageService.postTissueImages(formData).subscribe(
         (data) => {

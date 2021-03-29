@@ -33,6 +33,8 @@ export class LoginGuard implements CanActivate {
     ) {
       return true;
     } else {
+      localStorage.removeItem('token_expiration');
+      localStorage.removeItem('userEmail');
       this.router.navigate(['login']);
       this.toastrService.error('Need to Login');
       return false;

@@ -19,37 +19,31 @@
           <div class="mb-3">
             <label for="regionId">Region</label>
             <div class="form-group">
-              <input
-                class="form-control"
-                type="number"
-                id="regionId"
-                formControlName="regionId"
-                placeholder="Region Id"
-              />
+              <select class="form-select" formControlName="regionId">
+                <option *ngFor="let region of regions" [ngValue]="region.id">
+                  {{ region.name }}
+                </option>
+              </select>
             </div>
           </div>
           <div class="mb-3">
             <label for="sortId">Sort</label>
             <div class="form-group">
-              <input
-                class="form-control"
-                type="number"
-                id="sortId"
-                formControlName="sortId"
-                placeholder="Sort Id"
-              />
+              <select class="form-select" formControlName="sortId">
+                <option *ngFor="let sort of sorts" [ngValue]="sort.id">
+                  {{ sort.name }}
+                </option>
+              </select>
             </div>
           </div>
           <div class="mb-3">
             <label for="tissueGender">Gender</label>
             <div class="form-group">
-              <input
-                class="form-control"
-                type="text"
-                id="tissueGender"
-                formControlName="gender"
-                placeholder="Tissue Gender"
-              />
+              <select class="form-select" formControlName="gender">
+                <option [ngValue]="'Male'">Male</option>
+                <option [ngValue]="'Female'">Female</option>
+                <option [ngValue]="emptyString">Null</option>
+              </select>
             </div>
           </div>
         </form>

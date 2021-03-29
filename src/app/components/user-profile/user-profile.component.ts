@@ -13,10 +13,10 @@ export class UserProfileComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.getUser(UserService.currentUser.email);
+    this.getUser(localStorage.getItem('userEmail'));
   }
 
-  getUser(email: string) {
+  getUser(email: string | null) {
     this.userService.getUser(email).subscribe((response) => {
       this.user = response.data;
     });

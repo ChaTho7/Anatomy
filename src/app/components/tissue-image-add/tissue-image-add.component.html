@@ -5,15 +5,13 @@
       <div class="card-body">
         <form [formGroup]="tissueImageAddForm">
           <div class="mb-3">
-            <label for="tissueId">Tissue Id</label>
+            <label for="tissueId">Tissue</label>
             <div class="form-group">
-              <input
-                class="form-control"
-                type="number"
-                id="tissueId"
-                placeholder="Tissue Id"
-                formControlName="tissueId"
-              />
+              <select class="form-select" formControlName="tissueId">
+                <option *ngFor="let tissue of tissues" [ngValue]="tissue.id">
+                  {{ tissue.name }}
+                </option>
+              </select>
             </div>
           </div>
           <div class="mb-3">
