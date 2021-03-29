@@ -9,7 +9,7 @@
   <label for="filterText" class="form-label">Search Tissue</label>
   <input
     type="text"
-    class="form-control"
+    class="form-control dark-theme"
     [(ngModel)]="filterText"
     id="filterText"
     placeholder="Tissue Name"
@@ -18,7 +18,7 @@
 <!-- <div *ngIf="filterText" class="alert alert-primary">{{ filterText }}</div> -->
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
-    <tr>
+    <tr class="dark-theme">
       <th>Id</th>
       <th>Name</th>
       <th>Sort</th>
@@ -30,6 +30,7 @@
   </thead>
   <tbody>
     <tr
+      class="dark-theme"
       *ngFor="let tissueDetail of tissuesDetail | tissueFilterPipe: filterText"
     >
       <td>{{ tissueDetail.id }}</td>
@@ -40,7 +41,7 @@
       <td>{{ tissueDetail.origin }}</td>
       <td>
         <button
-          class="btn btn-success"
+          class="btn btn-outline-success"
           (click)="alert(tissueDetail)"
           routerLink="/tissues/{{ tissueDetail.id }}"
         >

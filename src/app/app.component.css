@@ -1,3 +1,6 @@
+.dark-theme {
+  background-color: hsl(210, 11%, 25%);
+}
 .btn-outline-dark-reverse {
   color: #fff;
   background-color: #212529;

@@ -1,13 +1,13 @@
 <div class="content">
   <div class="col-md-12">
-    <div class="card">
+    <div class="card" class="dark-theme">
       <div class="card-header"><h5 class="title">Update Tissue</h5></div>
       <div class="card-body">
         <form [formGroup]="tissueUpdateForm">
           <div class="mb-3">
             <label for="tissueId">Tissue</label>
             <div class="form-group">
-              <select class="form-select" formControlName="id">
+              <select class="form-select dark-theme" formControlName="id">
                 <option *ngFor="let tissue of tissues" [ngValue]="tissue.id">
                   {{ tissue.name }}
                 </option>
@@ -18,7 +18,7 @@
             <label for="tissueName">Tissue Name</label>
             <div class="form-group">
               <input
-                class="form-control"
+                class="form-control dark-theme"
                 type="text"
                 id="tissueName"
                 formControlName="name"
@@ -29,7 +29,7 @@
           <div class="mb-3">
             <label for="regionId">Region</label>
             <div class="form-group">
-              <select class="form-select" formControlName="regionId">
+              <select class="form-select dark-theme" formControlName="regionId">
                 <option *ngFor="let region of regions" [ngValue]="region.id">
                   {{ region.name }}
                 </option>
@@ -39,7 +39,7 @@
           <div class="mb-3">
             <label for="sortId">Sort</label>
             <div class="form-group">
-              <select class="form-select" formControlName="sortId">
+              <select class="form-select dark-theme" formControlName="sortId">
                 <option *ngFor="let sort of sorts" [ngValue]="sort.id">
                   {{ sort.name }}
                 </option>
@@ -49,7 +49,7 @@
           <div class="mb-3">
             <label for="tissueGender">Gender</label>
             <div class="form-group">
-              <select class="form-select" formControlName="gender">
+              <select class="form-select dark-theme" formControlName="gender">
                 <option [ngValue]="'Male'">Male</option>
                 <option [ngValue]="'Female'">Female</option>
                 <option [ngValue]="emptyString">Null</option>
@@ -59,7 +59,7 @@
         </form>
       </div>
       <div class="card-footer">
-        <button class="btn btn-fill btn-primary" (click)="update()">
+        <button class="w-100 btn btn-outline-light" (click)="update()">
           Update
         </button>
       </div>

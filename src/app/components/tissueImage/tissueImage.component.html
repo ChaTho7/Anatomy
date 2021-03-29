@@ -1,6 +1,6 @@
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
-    <tr>
+    <tr class="dark-theme">
       <th>Id</th>
       <th>Name</th>
       <th>Sort</th>
@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let crrntTissue of currentTissue">
+    <tr *ngFor="let crrntTissue of currentTissue" class="dark-theme">
       <td>{{ crrntTissue.id }}</td>
       <td>{{ crrntTissue.name }}</td>
       <td>{{ crrntTissue.sort }}</td>

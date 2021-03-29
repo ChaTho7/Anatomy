@@ -1,13 +1,13 @@
 <div class="content">
   <div class="col-md-12">
-    <div class="card">
+    <div class="card" class="dark-theme">
       <div class="card-header"><h5 class="title">Add Tissue Image</h5></div>
       <div class="card-body">
         <form [formGroup]="tissueImageAddForm">
           <div class="mb-3">
             <label for="tissueId">Tissue</label>
             <div class="form-group">
-              <select class="form-select" formControlName="tissueId">
+              <select class="form-select dark-theme" formControlName="tissueId">
                 <option *ngFor="let tissue of tissues" [ngValue]="tissue.id">
                   {{ tissue.name }}
                 </option>
@@ -18,7 +18,7 @@
             <label for="imageFile">Tissue Image</label>
             <div class="form-group">
               <input
-                class="form-control"
+                class="form-control dark-theme"
                 type="file"
                 id="imageFile"
                 formControlName="image"
@@ -30,7 +30,7 @@
         </form>
       </div>
       <div class="card-footer">
-        <button class="btn btn-fill btn-primary" (click)="add()">Add</button>
+        <button class="w-100 btn btn-outline-light" (click)="add()">Add</button>
       </div>
     </div>
   </div>

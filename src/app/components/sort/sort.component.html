@@ -1,18 +1,25 @@
 <div class="mb-3">
   <input
     type="text"
-    class="form-control"
+    class="form-control dark-theme"
     [(ngModel)]="filterText"
     id="filterText"
     placeholder="Sort Name"
   />
 </div>
 <ul class="list-group">
-  <li (click)="clearCurrentSort()" [class]="checkCurrentSort()">All Sorts</li>
+  <li
+    (click)="clearCurrentSort()"
+    [class]="checkCurrentSort()"
+    class="dark-theme"
+  >
+    All Sorts
+  </li>
   <li
     *ngFor="let sort of sorts | sortFilterPipe: filterText"
     (click)="setCurrentSort(sort)"
     [class]="getCurrentSort(sort)"
+    class="dark-theme"
   >
     {{ sort.name }}
   </li>
