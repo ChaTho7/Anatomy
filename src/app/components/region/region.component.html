@@ -1,22 +1,73 @@
-<div class="mb-3">
-  <input
-    type="text"
-    class="form-control dark-theme"
-    [(ngModel)]="filterText"
-    id="filterText"
-    placeholder="Region Name"
-  />
+<div class="collapse show multi-collapse" id="filterMenuCollapse">
+  <div class="d-flex flex-column p-3 text-white bg-dark">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingSeven">
+          <button
+            class="w-100 btn btn-outline-dark-reverse-accordion"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseSeven"
+            aria-expanded="false"
+            aria-controls="flush-collapseSeven"
+          >
+            <svg class="bi me-2" width="16" height="16">
+              <use xlink:href="#filterTissue" />
+            </svg>
+            Regions
+          </button>
+        </h2>
+        <div
+          id="flush-collapseSeven"
+          class="accordion-collapse show collapse"
+          aria-labelledby="flush-headingSeven"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control dark-theme"
+                [(ngModel)]="filterText"
+                id="filterText"
+                placeholder="Region Name"
+              />
+            </div>
+            <div
+              class="form-check"
+              (click)="clearCurrentRegion()"
+              [class]="checkCurrentRegion()"
+            >
+              <input
+                class="btn-check"
+                type="radio"
+                name="exampleRadios1"
+                id="exampleRadios1"
+                value="option"
+                checked
+              />
+              <label for="exampleRadios1"> All Regions </label>
+            </div>
+            <div
+              class="form-check"
+              (click)="setCurrentRegion(region)"
+              [class]="getCurrentRegion(region)"
+              *ngFor="let region of regions | regionFilterPipe: filterText"
+            >
+              <input
+                class="btn-check"
+                type="radio"
+                name="exampleRadios1"
+                id="exampleRadios1{{ region.id }}"
+                value="option{{ region.id }}"
+              />
+              <label for="exampleRadios1{{ region.id }}">
+                {{ region.name }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<ul class="list-group">
-  <li (click)="clearCurrentRegion()" [class]="checkCurrentRegion()">
-    All Regions
-  </li>
-  <li
-    (click)="setCurrentRegion(region)"
-    *ngFor="let region of regions | regionFilterPipe: filterText"
-    [class]="getCurrentRegion(region)"
-    class="dark-theme"
-  >
-    {{ region.name }}
-  </li>
-</ul>

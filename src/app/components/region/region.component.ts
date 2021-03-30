@@ -35,17 +35,17 @@ export class RegionComponent implements OnInit {
 
   getCurrentRegion(region: Region) {
     if (region.id == this.comService.regionId) {
-      return 'list-group-item active';
+      return 'w-100 btn btn-dark white-theme';
     } else {
-      return 'list-group-item';
+      return 'w-100 btn btn-dark dark-theme';
     }
   }
 
   checkCurrentRegion() {
     if (!this.comService.regionId || this.comService.regionId == 0) {
-      return 'list-group-item active';
+      return 'w-100 btn btn-dark white-theme';
     } else {
-      return 'list-group-item';
+      return 'w-100 btn btn-dark dark-theme';
     }
   }
 

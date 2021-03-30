@@ -1,0 +1,30 @@
+.btn-outline-dark-reverse {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+}
+.btn-outline-dark-reverse:hover {
+  color: #212529;
+  background-color: #fff;
+  border-color: #212529;
+}
+.btn-check:focus + .btn-outline-dark-reverse,
+.btn-outline-dark-reverse:focus {
+  box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5);
+}
+.btn-outline-dark-reverse-accordion {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+  text-align: left;
+}
+.btn-outline-dark-reverse-accordion:hover {
+  color: #212529;
+  background-color: #fff;
+  border-color: #212529;
+  text-align: left;
+}
+.btn-check:focus + .btn-outline-dark-reverse-accordion,
+.btn-outline-dark-reverse-accordion:focus {
+  box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5);
+}

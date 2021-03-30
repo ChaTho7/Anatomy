@@ -3,3 +3,10 @@
   background-color: #212529;
   color: #fff;
 }
+.white-theme {
+  background-color: #fff;
+  color: #212529;
+}
+a {
+  color: inherit;
+}

@@ -35,17 +35,17 @@ export class SortComponent implements OnInit {
 
   getCurrentSort(sort: Sort) {
     if (sort.id == this.comService.sortId) {
-      return 'list-group-item active';
+      return 'w-100 btn btn-dark white-theme';
     } else {
-      return 'list-group-item';
+      return 'w-100 btn btn-dark dark-theme';
     }
   }
 
   checkCurrentSort() {
     if (this.comService.sortId == 0 || !this.comService.sortId) {
-      return 'list-group-item active';
+      return 'w-100 btn btn-dark white-theme';
     } else {
-      return 'list-group-item';
+      return 'w-100 btn btn-dark dark-theme';
     }
   }
 
