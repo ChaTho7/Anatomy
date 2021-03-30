@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginGuard } from './guards/login.guard';
 import { TissueUpdateComponent } from './components/tissue-update/tissue-update.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: UserProfileComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent,
     canActivate: [LoginGuard],
   },
   {

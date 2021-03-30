@@ -3,6 +3,12 @@
   background-color: #212529;
   color: #fff;
 }
+.dark-font {
+  color: #212529;
+}
+.dark-theme-root {
+  background-color: hsl(210, 11%, 25%);
+}
 .white-theme {
   background-color: #fff;
   color: #212529;

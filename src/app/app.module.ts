@@ -25,6 +25,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TissueUpdateComponent } from './components/tissue-update/tissue-update.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     RegisterComponent,
     TissueUpdateComponent,
     UserProfileComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
