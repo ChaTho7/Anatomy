@@ -15,7 +15,7 @@ export class RegionComponent implements OnInit {
   filterText = '';
   private comService = ComminicateService;
 
-  constructor(private regionService: RegionService, private router: Router) {}
+  constructor(private regionService: RegionService) {}
 
   ngOnInit(): void {
     this.getRegions();
@@ -30,7 +30,6 @@ export class RegionComponent implements OnInit {
 
   setCurrentRegion(region: Region) {
     this.comService.regionId = region.id;
-    this.comService.filterRouter(this.router);
   }
 
   getCurrentRegion(region: Region) {
@@ -51,6 +50,5 @@ export class RegionComponent implements OnInit {
 
   clearCurrentRegion() {
     this.comService.regionId = 0;
-    this.comService.filterRouter(this.router);
   }
 }

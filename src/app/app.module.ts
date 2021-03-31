@@ -26,6 +26,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TissueUpdateComponent } from './components/tissue-update/tissue-update.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { TissueThumbnailComponent } from './components/tissue-thumbnail/tissue-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     TissueUpdateComponent,
     UserProfileComponent,
     PaymentComponent,
+    TissueThumbnailComponent,
   ],
   imports: [
     BrowserModule,

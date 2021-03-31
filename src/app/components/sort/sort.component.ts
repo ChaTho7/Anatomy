@@ -15,7 +15,7 @@ export class SortComponent implements OnInit {
   filterText = '';
   private comService = ComminicateService;
 
-  constructor(private sortService: SortService, private router: Router) {}
+  constructor(private sortService: SortService) {}
 
   ngOnInit(): void {
     this.getSorts();
@@ -30,7 +30,6 @@ export class SortComponent implements OnInit {
 
   setCurrentSort(sort: Sort) {
     this.comService.sortId = sort.id;
-    this.comService.filterRouter(this.router);
   }
 
   getCurrentSort(sort: Sort) {
@@ -51,7 +50,6 @@ export class SortComponent implements OnInit {
 
   clearCurrentSort() {
     this.comService.sortId = 0;
-    this.comService.filterRouter(this.router);
   }
 
   fileContent: any = '';

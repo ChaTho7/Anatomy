@@ -6,7 +6,6 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <div class="mb-3">
-  <label for="filterText" class="form-label">Search Tissue</label>
   <input
     type="text"
     class="form-control dark-theme"
@@ -15,8 +14,60 @@
     placeholder="Tissue Name"
   />
 </div>
-<!-- <div *ngIf="filterText" class="alert alert-primary">{{ filterText }}</div> -->
-<table *ngIf="dataLoaded == true" class="table">
+
+<div class="album py-5 dark-theme">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div
+        class="col"
+        *ngFor="
+          let tissueDetail of tissuesDetail | tissueFilterPipe: filterText
+        "
+      >
+        <div class="card shadow-sm">
+          <div>
+            <app-tissue-thumbnail
+              [tissueId]="tissueDetail.id"
+            ></app-tissue-thumbnail>
+          </div>
+
+          <div class="card-body dark-theme">
+            <p class="card-text text-align-center">
+              {{ tissueDetail.name }}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-success"
+                  routerLink="/tissues/{{ tissueDetail.id }}"
+                >
+                  Details
+                </button>
+              </div>
+              <small class="text-muted">Created by ChaTho</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="text-muted py-5 dark-theme">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="/tissues/#">Back to top</a>
+    </p>
+    <p class="mb-1 dark-font">
+      <a href="https://github.com/ChaTho7" class="text-white" target="_blank"
+        >Designed by ChaTho</a
+      >
+    </p>
+  </div>
+</footer>
+
+<!-- <table *ngIf="dataLoaded == true" class="table">
   <thead>
     <tr class="dark-theme">
       <th>Id</th>
@@ -50,4 +101,4 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->

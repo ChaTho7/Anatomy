@@ -85,3 +85,6 @@ input:focus {
 .order {
   margin-top: 10px;
 }
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
