@@ -57,11 +57,101 @@
                         <use xlink:href="#github" /></svg
                     ></a>
                   </li>
+                  <div class="col-md-4 ms-auto">
+                    <button
+                      type="button"
+                      class="btn btn-outline-light"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                      (click)="createUserUpdateForm()"
+                    >
+                      Update user infos
+                    </button>
+                  </div>
                 </ul>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content dark-theme">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update Infos</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="userUpdateForm">
+          <div class="mb-3">
+            <label for="name">Name</label>
+            <div class="form-group">
+              <input
+                class="form-control dark-theme"
+                type="text"
+                id="name"
+                formControlName="name"
+                placeholder="Name"
+                autocomplete="off"
+              />
+            </div>
+            <label for="surname">Surname</label>
+            <div class="form-group">
+              <input
+                class="form-control dark-theme"
+                type="text"
+                id="surname"
+                formControlName="surname"
+                placeholder="Surname"
+                autocomplete="off"
+              />
+            </div>
+            <label for="email">E-Mail</label>
+            <div class="form-group">
+              <input
+                class="form-control dark-theme"
+                type="text"
+                id="email"
+                formControlName="email"
+                placeholder="E-Mail"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          (click)="updateUser()"
+        >
+          Update
+        </button>
       </div>
     </div>
   </div>

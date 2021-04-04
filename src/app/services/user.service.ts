@@ -17,4 +17,11 @@ export class UserService {
       this.apiURL + 'getuser?email=' + email
     );
   }
+
+  updateUser(user: UserModel): Observable<SingleResponseModel<UserModel>> {
+    return this.httpClient.put<SingleResponseModel<UserModel>>(
+      this.apiURL + 'updateUser',
+      user
+    );
+  }
 }

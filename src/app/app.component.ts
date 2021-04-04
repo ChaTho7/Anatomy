@@ -12,7 +12,7 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent {
   title = 'Anatomy';
-  user: UserModel = { email: '', name: '', surname: '' };
+  user: UserModel = { id: 0, email: '', name: '', surname: '' };
 
   constructor(
     private authService: AuthService,
