@@ -64,13 +64,8 @@ export class TissueUpdateComponent implements OnInit {
       sortId: ['', Validators.required],
       regionId: ['', Validators.required],
       name: ['', Validators.required],
-      gender: ['', Validators.required],
+      gender: [''],
     });
-  }
-
-  update1() {
-    let tissueModel = Object.assign({}, this.tissueUpdateForm.value);
-    console.log(tissueModel);
   }
 
   update() {
