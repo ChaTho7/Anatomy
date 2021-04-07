@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { UserModel } from 'src/app/models/userModel';
 import { UserService } from 'src/app/services/user.service';
 import {
   FormGroup,
@@ -8,6 +7,10 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { UserUpdateModel } from 'src/app/models/userUpdateModel';
+import { UserModel } from 'src/app/models/userModel';
+import { AuthService } from 'src/app/services/auth.service';
+import { LoginModel } from 'src/app/models/loginModel';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,11 +20,20 @@ import {
 export class UserProfileComponent implements OnInit {
   userUpdateForm: FormGroup;
   user: UserModel = { id: 0, email: '', name: '', surname: '' };
+  userUpdate: UserUpdateModel = {
+    id: 0,
+    email: '',
+    name: '',
+    surname: '',
+    currentPassword: '',
+    newPassword: '',
+  };
 
   constructor(
     private userService: UserService,
     private toastrService: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +53,35 @@ export class UserProfileComponent implements OnInit {
       name: [this.user.name, Validators.required],
       surname: [this.user.surname, Validators.required],
       email: [this.user.email, Validators.required],
+      currentPassword: ['', Validators.required],
+      newPassword: [''],
     });
+  }
+
+  verifyUser() {
+    if (this.userUpdateForm.valid) {
+      let verifyModel: LoginModel = {
+        password: this.userUpdateForm.value.currentPassword,
+        email: this.userUpdateForm.value.email,
+      };
+      this.authService.login(verifyModel).subscribe(
+        (data) => {
+          let token_expiration = new Date(data.data.expiration);
+          localStorage.setItem('token', data.data.token);
+          localStorage.setItem(
+            'token_expiration',
+            token_expiration.toLocaleString()
+          );
+          localStorage.setItem('userEmail', verifyModel.email);
+          this.updateUser();
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error);
+        }
+      );
+    } else {
+      this.toastrService.error('Infos invalid', 'ERROR');
+    }
   }
 
   updateUser() {

@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LoginModel } from '../models/loginModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { UserModel } from '../models/userModel';
+import { UserUpdateModel } from '../models/userUpdateModel';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +20,10 @@ export class UserService {
     );
   }
 
-  updateUser(user: UserModel): Observable<SingleResponseModel<UserModel>> {
-    return this.httpClient.put<SingleResponseModel<UserModel>>(
+  updateUser(
+    user: UserUpdateModel
+  ): Observable<SingleResponseModel<UserUpdateModel>> {
+    return this.httpClient.put<SingleResponseModel<UserUpdateModel>>(
       this.apiURL + 'updateUser',
       user
     );

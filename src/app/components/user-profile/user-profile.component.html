@@ -134,6 +134,39 @@
                 autocomplete="off"
               />
             </div>
+            <hr />
+            <div class="row">
+              <div class="col-md-6">
+                <label for="newPassword">New Password</label>
+                <div class="form-group">
+                  <input
+                    class="form-control dark-theme"
+                    type="password"
+                    id="newPassword"
+                    formControlName="newPassword"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="currentPassword">Current Password</label>
+                <div class="form-group">
+                  <input
+                    class="form-control dark-theme"
+                    type="password"
+                    id="currentPassword"
+                    formControlName="currentPassword"
+                    autocomplete="off"
+                  />
+                </div>
+                <p>
+                  *<sub
+                    >You have to confirm your password although you don't update
+                    password.</sub
+                  >
+                </p>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -148,7 +181,7 @@
         <button
           type="button"
           class="btn btn-outline-light"
-          (click)="updateUser()"
+          (click)="verifyUser()"
         >
           Update
         </button>
